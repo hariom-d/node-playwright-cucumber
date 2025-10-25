@@ -1,0 +1,24 @@
+{
+  "name": "cucumber-demo",
+  "version": "1.0.0",
+  "description": "this is a demo project",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+ "scripts": {
+    "test": "npm run cucumber",
+    "cucumber": "cucumber-js --config cucumber.json",
+    "cucumber:report": "npx cucumber-js --config cucumber.json --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html "
+  },
+
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.56.1",
+    "cucumber-html-reporter": "^7.2.0",
+    "dotenv": "^17.2.3",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "playwright": "^1.56.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
