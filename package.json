@@ -8,7 +8,8 @@
  "scripts": {
     "test": "npm run cucumber",
     "cucumber": "cucumber-js --config cucumber.json",
-    "cucumber:report": "npx cucumber-js --config cucumber.json --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html "
+    "cucumber:report": "npx cucumber-js --config cucumber.json --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html ",
+    "report:html": "node --loader ts-node/esm generate-report.js"
   },
 
   "devDependencies": {
