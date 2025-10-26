@@ -1,13 +1,15 @@
 import { Browser, BrowserContext, chromium, Page } from "playwright";
+import BasePO from "./BasePO";
 
-export default class LoginPO {
+export default class LoginPO extends BasePO {
     page: Page;
     constructor(page: Page) {
+        super(page)
         this.page = page;
     }
 
     async navigateToLoginPage() {
-        await this.page.getByRole('button', { name: 'My account' }).click();
+        this.clickButtonWithName('My account');
         await this.page.getByRole('link', { name: 'Login' }).click();
     }
 }  

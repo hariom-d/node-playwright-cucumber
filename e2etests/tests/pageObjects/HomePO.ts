@@ -1,4 +1,5 @@
 import { Browser, BrowserContext, chromium, Page } from "playwright";
+import * as locators from "../locators/pageLocators.json";
 
 export default class HomePO {
     page: Page;
@@ -7,7 +8,7 @@ export default class HomePO {
     }
 
     async navigateToHomePage() {
-        await this.page.goto("https://ecommerce-playground.lambdatest.io/");
+        await this.page.goto(locators.homePageLocators.URL);
     }
 
     async getHomePageTitle() {
