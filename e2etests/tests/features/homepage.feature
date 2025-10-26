@@ -4,5 +4,9 @@ Feature: sample homepage feature
   So that I can see the welcome message
 
   Scenario: Visit the homepage
-    Given I am on the homepage
-    Then I should see "Welcome to the Homepage!"    
+    Given I login to the ecommerce website
+    Then I should see "My Account" in the title
+    When I navigate to the order history page
+    When I navigate to the notifications page
+    When I logout from the ecommerce website
+    Then I should see "Your Store" in the title
