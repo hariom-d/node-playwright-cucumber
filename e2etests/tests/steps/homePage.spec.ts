@@ -1,34 +1,27 @@
 import { Given, When, Then, setDefaultTimeout, Before, After } from "@cucumber/cucumber";
-import { Browser, BrowserContext, chromium, Page } from "playwright";
 import {expect} from "@playwright/test";
+import { page } from "../../corelib/basePage.spec";
+import LoginPO from "../pageObjects/loginPO";
+import HomePO from "../pageObjects/homePO";
 
 setDefaultTimeout(60 * 1000);
-let browser: Browser;
-let context: BrowserContext
-let page: Page
 
-Before(async function () {
-  browser = await chromium.launch({
-    headless: false,
-    channel: "chrome",
-    args: ["--start-maximized"],
-  });
-  context = await browser.newContext({viewport: null, javaScriptEnabled: true});
-  page = await context.newPage();
-  console.log("Hari: Before Hook executed");
-});
+let loginPO: LoginPO;
+let homePO: HomePO;
 
 Given("I login to the ecommerce website", async function () {
+  homePO = new HomePO(page);
+  await homePO.navigateToHomePage();
+
+  loginPO = new LoginPO(page);
+  await loginPO.navigateToLoginPage();
+  //Verify that we are on login page
+  await page.locator('//a[contains(text(),"Address Book")]').waitFor({timeout: 1000});
   
-  await page.goto("https://ecommerce-playground.lambdatest.io/");
-  await page.getByRole('button', { name: 'My account' }).click();
-  await sleep(1000);
-  await page.getByRole('link', { name: 'Login' }).click();
-  await sleep(1000);
   await page.getByRole('textbox', { name: 'E-Mail Address' }).click();
-  await page.getByRole('textbox', { name: 'E-Mail Address' }).fill('');
+  await page.getByRole('textbox', { name: 'E-Mail Address' }).fill('hari.dwivedi@gmail.com');
   await page.getByRole('textbox', { name: 'Password' }).click();
-  await page.getByRole('textbox', { name: 'Password' }).fill('');
+  await page.getByRole('textbox', { name: 'Password' }).fill('hari001');
   await page.getByRole('button', { name: 'Login' }).click();
 
   console.log("Hari: I login to the ecommerce website");
@@ -62,14 +55,6 @@ Then("I should see {string} in the title", async function (string) {
   expect(title).toBe(string);
   
   console.log("Hari: I should see ...", string);
-});
-
-After(async function () {
-  await page.close();
-  await context.close();
-  await browser.close();
-
-  console.log("Hari: After Hook executed");
 });
 
 async function sleep(ms: number): Promise<void> {
