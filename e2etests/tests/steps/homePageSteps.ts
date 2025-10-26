@@ -26,9 +26,9 @@ Given("I login to the ecommerce website", async function () {
   await page.getByRole('link', { name: 'Login' }).click();
   await sleep(1000);
   await page.getByRole('textbox', { name: 'E-Mail Address' }).click();
-  await page.getByRole('textbox', { name: 'E-Mail Address' }).fill('hari.dwivedi@gmail.com');
+  await page.getByRole('textbox', { name: 'E-Mail Address' }).fill('');
   await page.getByRole('textbox', { name: 'Password' }).click();
-  await page.getByRole('textbox', { name: 'Password' }).fill('hari001');
+  await page.getByRole('textbox', { name: 'Password' }).fill('');
   await page.getByRole('button', { name: 'Login' }).click();
 
   console.log("Hari: I login to the ecommerce website");
@@ -46,7 +46,7 @@ When("I navigate to the notifications page", async function () {
   await page.getByRole('link', { name: 'Notification' }).click();
   await page.getByRole('link', { name: 'Continue' }).click();
 
-  console.log("Hari: I am on the homepage");
+  console.log("Hari: I navigate to the notifications page");
 });
 
 When("I logout from the ecommerce website", async function () {
@@ -54,7 +54,7 @@ When("I logout from the ecommerce website", async function () {
   await page.getByRole('link', { name: 'Logout' }).click();
   await page.getByRole('link', { name: 'Continue' }).click();
 
-  console.log("Hari: I am on the homepage");
+  console.log("Hari: I logout from the ecommerce website");
 });
 
 Then("I should see {string} in the title", async function (string) {
