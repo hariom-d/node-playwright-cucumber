@@ -52,7 +52,7 @@ When("I logout from the ecommerce website", async function () {
 
 Then("I should see {string} in the title", async function (string) {
   const title = await page.title();
-  expect(title).toBe(string);
+  await expect(title).toBe(string);
   
   console.log("Hari: I should see ...", string);
 });

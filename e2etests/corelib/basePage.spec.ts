@@ -1,6 +1,5 @@
 import { Given, When, Then, setDefaultTimeout, Before, After } from "@cucumber/cucumber";
 import { Browser, BrowserContext, chromium, Page } from "playwright";
-import {expect} from "@playwright/test";
 
 setDefaultTimeout(60 * 1000);
 let browser: Browser;
