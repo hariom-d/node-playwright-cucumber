@@ -9,7 +9,8 @@ export default class LoginPO extends BasePO {
     }
 
     async navigateToLoginPage() {
-        this.clickButtonWithName('My account');
-        await this.page.getByRole('link', { name: 'Login' }).click();
+        await this.clickButtonWithName('My account');
+        // await this.page.getByRole('link', { name: 'Login' }).click();
+        await this.clickLinkWithName('Login');
     }
 }  

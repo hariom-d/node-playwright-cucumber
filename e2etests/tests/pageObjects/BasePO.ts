@@ -9,4 +9,10 @@ export default class BasePO {
     async clickButtonWithName (btnName: string) {
         await this.page.getByRole('button', { name: btnName }).click();
     }
+
+    async clickLinkWithName (linkName: string) {
+        await this.page.getByRole('link', { name: linkName }).click();
+    }
+
+    //Add more common methods here
 }  

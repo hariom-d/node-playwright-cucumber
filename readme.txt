@@ -3,43 +3,9 @@
 2. We can either use a normal html report(npm run cucumber:report) or Multiple Cucumber html report(npm run report:html). They will take the .json report
 from the previous step.
 
+//create the skeleton of a nodejs project
+npm init -y
 
-//launch.json for debugging
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Debug Cucumber Tests",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": [
-        "--require-module",
-        "ts-node/register",
-        "--require",
-        "features/step_definitions/**/*.ts",
-        "--require",
-        "features/support/**/*.ts",
-        "--format",
-        "progress",
-        "features/**/*.feature"
-      ],
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "env": {
-        "NODE_ENV": "debug"
-      }
-    },
-    {
-  "type": "node",
-  "request": "launch",
-  "name": "Debug via npm test",
-  "runtimeExecutable": "npm",
-  "runtimeArgs": ["run", "test", "--"],
-  "port": 9229,
-  "console": "integratedTerminal"
-}
+//create the skeleton of the playwright wthin that project
+npm init playwright@latest
 
-  ]
-}
